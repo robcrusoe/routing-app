@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './guards/can-deactivate.service';
 import { AuthGuard } from './guards/auth-guard.service';
 import { AuthService } from './../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
 			},
 			{
 				path: ':id/edit',
-				component: EditServerComponent
+				component: EditServerComponent,
+				canDeactivate: [CanDeactivateGuard]
 			}
 		]
 	},
@@ -70,7 +72,7 @@ const appRoutes: Routes = [
 		FormsModule,
 		RouterModule.forRoot(appRoutes)
 	],
-	providers: [ServersService, AuthService, AuthGuard],
+	providers: [ServersService, AuthService, AuthGuard, CanDeactivateGuard],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
