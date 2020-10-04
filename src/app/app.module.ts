@@ -44,6 +44,10 @@ const appRoutes: Routes = [
 				component: EditServerComponent
 			}
 		]
+	},
+	{
+		path: '**',
+		redirectTo: '/'
 	}
 ];
 
