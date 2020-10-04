@@ -33,7 +33,13 @@ const appRoutes: Routes = [
 	},
 	{
 		path: 'servers',
-		component: ServersComponent
+		component: ServersComponent,
+		children: [
+			{
+				path: ':id/edit',
+				component: EditServerComponent
+			}
+		]
 	}
 ];
 
