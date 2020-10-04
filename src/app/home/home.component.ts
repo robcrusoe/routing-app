@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private _router: Router
+    private _router: Router,
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -18,7 +19,11 @@ export class HomeComponent implements OnInit {
 
   onLoadServers(): void {
     /* Using Absolute Path */
-    this._router.navigate(['/servers']);
+    // this._router.navigate(['/servers']);
+
+
+    /* Using Relative Path */
+    this._router.navigate(['servers'], { relativeTo: this._route });
   }
 
 }
