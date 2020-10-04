@@ -1,3 +1,5 @@
+import { AuthGuard } from './guards/auth-guard.service';
+import { AuthService } from './../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
 	{
 		path: 'servers',
 		component: ServersComponent,
+		canActivate: [AuthGuard],
 		children: [
 			{
 				path: ':id',
@@ -67,7 +70,7 @@ const appRoutes: Routes = [
 		FormsModule,
 		RouterModule.forRoot(appRoutes)
 	],
-	providers: [ServersService],
+	providers: [ServersService, AuthService, AuthGuard],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
